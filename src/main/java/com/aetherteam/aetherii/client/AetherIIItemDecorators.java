@@ -12,7 +12,7 @@ import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
 
 public class AetherIIItemDecorators {
     private static final IItemDecorator REINFORCED_DURABILITY = (guiGraphics, font, stack, xOffset, yOffset) -> { //todo improve visuals
-        guiGraphics.pose().pushPose();
+        guiGraphics.pose().pushMatrix();
         if (stack.isBarVisible() && stack.has(AetherIIDataComponents.REINFORCEMENT_TIER)) {
             int l = stack.getBarWidth();
 
@@ -27,7 +27,7 @@ public class AetherIIItemDecorators {
             guiGraphics.fill(RenderPipelines.GUI, j, k, j + 13, k + 2, -16777216);
             guiGraphics.fill(RenderPipelines.GUI, j, k, j + l, k + 1, i | 0xFF000000);
         }
-        guiGraphics.pose().popPose();
+        guiGraphics.pose().popMatrix();
         return true;
     };
 
