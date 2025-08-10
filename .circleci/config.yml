@@ -16,10 +16,14 @@ jobs:
       GRADLE_OPTS: -Dorg.gradle.daemon=false
     steps:
       - setup
-      - run: |
-          chmod +x ./gradlew
-          ./gradlew publish
-
+      - run:
+          name: Publish to Maven
+          command: |
+            chmod +x ./gradlew
+            ./gradlew publish \
+              -Pgpr.user=$GPR_USER \
+              -Pgpr.key=$GPR_KEY
+              
 commands:
   setup:
     steps:
